@@ -1,8 +1,6 @@
-# s23db19vattikonda
+# s23db61yalamanchi
 This is my second server.
 
-Remote [render Server](https://s23db19vattikonda.onrender.com)
+- **Class**: flower
 
-- **Class**: Teacher
-
-- **Attrubutes**: Teacher_Name, Teacher_Salary, Subject
+- **Attrubutes**: flower_Name, flower_color, flower_cost
