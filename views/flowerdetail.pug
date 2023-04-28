@@ -1,0 +1,23 @@
+extends layout
+block content
+    h1= title
+    if(toShow==null)
+        h2 Instance not found
+    else
+        - let flowerid = toShow._id
+        - let flower_name = toShow.flower_name
+        - let flower_color = toShow.flower_color
+        - let flower_cost = toShow.flower_cost
+        div
+            div.row
+                div(class='costumeAttr mr-3') flower ID is:
+                div #{flowerid}
+            div.row
+                div(class='costumeAttr mr-3') flower Name is:
+                div #{flower_name}
+            div.row
+                div(class='costumeAttr mr-3') flower color is:
+                div #{flower_color}
+            div.row
+                div(class='costumeAttr mr-3') flower cost is:
+                div #{flower_cost}

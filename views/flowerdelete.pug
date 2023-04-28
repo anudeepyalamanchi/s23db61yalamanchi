@@ -1,0 +1,49 @@
+extends layout
+block content
+    h1= title
+    if (toShow == null)
+     h2 No instance to delete
+    else
+     - let flowerid = toShow._id
+     - let flower_name = toShow.flower_name
+     - let flower_color = toShow.flower_color
+     - let flower_cost = toShow.flower_cost
+     - let actionid = "/resource/flower/" + flowerid
+     script let actionid = "#{actionid}"
+     div
+        div.row
+            div(class='costumeAttr mr-3') flower ID is:
+            div #{flowerid}
+        div.row
+            div(class='costumeAttr mr-3') flower Name is:
+            div #{flower_name}
+        div.row
+            div(class='costumeAttr mr-3') flower salary is:
+            div #{flower_color}
+        div.row
+            div(class='costumeAttr mr-3') flower subject is:
+            div #{flower_cost}
+     button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+     button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+    script.
+        function cancel() {
+        // Go back to the home page for the costume collection
+        window.location.href='/flower'
+        }
+    script.
+        function deleteOnid() {
+        console.log("starting delete")
+        // delete first
+        fetch(actionid, {
+        method: 'DELETE' 
+        }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+        alert("Delete succeded")
+        window.location.href='/flower'
+        // TODO handle body
+        }).catch((error) => {
+        // TODO handle error
+        alert("Delete failed " + error )
+        });
+     }

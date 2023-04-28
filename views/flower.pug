@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  button.btn( class="btn-primary ml-1", onclick= `dispatch(\"/flower/create\")`) Create
+  h1= title
+ 
+  - let result = results
+  div(class="container-fluid")
+    div(class="row")
+      each item,index in result
+       - let destination = `dispatch(\"/flower/update?id=${item._id}\")`
+       - let detailDes = `dispatch(\"/flower/detail?id=${item._id}\")`
+       - let deleteDes = `dispatch(\"/flower/delete?id=${item._id}\")`
+       div(class="col-sm-3",onClick=`buy(${index})`) Item: #{item.flower_name} #{item.flower_color} is #{item.flower_cost}
+        div(class="col-sm-2")
+          button.btn( class="btn-primary ml-1", onclick= destination) Update 
+        div(class="col-sm-2")
+          button.btn( class="btn-success ml-1", onclick= detailDes) Details
+        div(class="col-sm-2")
+          button.btn( class="btn-warning ml-1", onclick= deleteDes) Delete 
+  script.
+   function dispatch(path){
+    window.location.href=path
+   }
+  
+//-   script.
+//-     function buy(thing) {
+//-       thing = thing+1;
+//-       alert(`You Purchased Item ${thing}`);
+//-     }
